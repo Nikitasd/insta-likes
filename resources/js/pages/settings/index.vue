@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="project-nav-wrap">
-                <router-link v-for="tab in tabs" :key="tab.route" :to="{ name: tab.route }">
+                <router-link v-for="tab in tabs" :key="tab.route" :to="{ name: tab.route }" active-class="active">
                   <div class="default-nav" >{{ tab.name }}</div>
                 </router-link>
             </div>
@@ -32,12 +32,13 @@ export default {
           icon: 'user',
           name: "Профиль",
           route: 'settings.profile'
-        },
+        },/*
         {
           icon: 'lock',
           name: "Расходы",
-          route: null
+          route: 'settings.publications'
         },
+        */
           {
               icon: 'lock',
               name: "Публикации ",
