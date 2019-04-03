@@ -10,8 +10,8 @@
                 <div class="main-subtitle-bottom smaller mt-5" > Для входа/регистрации введите имя пользователя.</div>
               </div>
               <div class="subscribe-box-1 light for-hero mt-5">
-                <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" name="email" placeholder="Пример: nikitatest">
-                <has-error :form="form" field="email"/>
+                <input v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }" class="form-control" name="name" placeholder="Пример: nikitatest">
+                <has-error :form="form" field="name"/>
               </div>
               <div class="clear"></div>
               <v-button :loading="form.busy" class="btn btn-round btn-long mt-4 mb-3">
@@ -47,7 +47,7 @@
 
             <p class="mb-3 text-dark">Чтобы избегать постоянно этой проверки, Вам необходимо поставить пароль</p>
             <div class="clear"></div>
-            <p class="mb-3">Вы должны поставить лайк. Для подтверждения, что это Ваш аккаунт: {{ form.email }}</p>
+            <p class="mb-3">Вы должны поставить лайк. Для подтверждения, что это Ваш аккаунт: {{ form.login }}</p>
             <div class="clear"></div>
             <a href="https://www.instagram.com/p/BuR2C3eHn96/" target="_blank">
               https://www.instagram.com/p/BuR2C3eHn96/
@@ -78,7 +78,7 @@
 
         data: () => ({
             form: new Form({
-                email: '',
+                name: '',
             }),
             remember: false,
             isExist: false,

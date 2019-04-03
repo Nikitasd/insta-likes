@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="section product-padding clearfix">
 
-                                        Username: @SeregaBro
+                                        Username: {{ form.name }}
                                         <v-button :nativeType="'button'"
                                                   :type="'primary btn-sm'"
                                                   data-toggle="modal"
@@ -37,7 +37,8 @@
                                             <h3 slot="header">Изменить имя</h3>
                                             <div slot="body">
                                                 <div class="subscribe-box-1 light for-hero mt-5">
-                                                    <input type="text" placeholder="Username" class="form-control" autocomplete="off">
+                                                    <input v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }"
+                                                           class="form-control" autocomplete="off" type="text" name="name">
                                                 </div>
                                             </div>
                                         </modal>
@@ -183,7 +184,6 @@
         data: () => ({
             form: new Form({
                 name: '',
-                email: ''
             }),
             modal: {
                 changeUsername: "changeUsername",

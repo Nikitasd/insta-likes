@@ -11,6 +11,11 @@ const SettingsProfile = () => import('~/pages/settings/profile').then(m => m.def
 //const SettingsPassword = () => import('~/pages/settings/password').then(m => m.default || m)
 const SettingsPublication = () => import('~/pages/settings/publication').then(m => m.default || m)
 
+const PostsDetail = () => import('~/pages/posts/detail').then(m => m.default || m)
+const PostsAdd = () => import('~/pages/posts/add').then(m => m.default || m)
+const App = () => import('~/pages/App.vue').then(m => m.default || m)
+
+
 export default [
   { path: '/', name: 'welcome', component: Welcome },
 
@@ -20,7 +25,10 @@ export default [
  // { path: '/password/reset/:token', name: 'password.reset', component: PasswordReset },
 
   { path: '/home', name: 'home', component: Home },
-  { path: '/settings',
+
+
+
+    { path: '/settings',
     component: Settings,
     children: [
       { path: '', redirect: { name: 'settings.profile' } },
@@ -28,6 +36,13 @@ export default [
     //  { path: 'password', name: 'settings.password', component: SettingsPassword },
       { path: 'publication', name: 'settings.publication', component: SettingsPublication}
     ] },
+
+    { path: '/posts',
+        component: App,
+        children: [
+            { path: 'detail', name: 'posts.detail', component: PostsDetail },
+            { path: 'add', name: 'posts.add', component: PostsAdd },
+        ] },
 
   { path: '*', component: NotFound }
 ]
