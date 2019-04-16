@@ -1,4 +1,7 @@
 @import 'variables';
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700");
+
 @import '~bootstrap/scss/bootstrap';
 @import '~sweetalert2/src/sweetalert2';
 
@@ -6,3 +9,6 @@
 @import 'elements/navbar';
 @import 'elements/buttons';
 @import 'elements/transitions';
+
+
+@import 'styles/index';
