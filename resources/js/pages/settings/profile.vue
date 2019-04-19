@@ -1,32 +1,67 @@
 <template>
-    <!-- End banner Area -->
+    <div>
+        <section class="popular-destination-area section-gap">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="menu-content pb-70 col-lg-8">
+                        <div class="title text-center">
+                            <h1 class="mb-10">Popular Destinations</h1>
+                            <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day.</p>
+                        </div>
+                    </div>
 
-    <!-- Start insurence-one Area -->
-    <section class="insurence-one-area section-gap">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 insurence-left">
-                    <img class="img-fluid img-one" src="img/insurence/i1.jpg" alt="">
                 </div>
-                <div class="col-lg-6 insurence-right">
-                    <h6 class="text-uppercase">Need to know</h6>
-                    <h1>Insurance for journey</h1>
-                    <p>
-                        Here, I focus on a range of items and features that we use in life without giving them a second thought. such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-                    </p>
-                    <div class="list-wrap">
-                        <ul>
-                            <li>Strategic approach towards redesigning brand.</li>
-                            <li>logo design strategy ensures a perfectly crafted
-                                logo for your business.</li>
-                            <li>Branding that stands out in the crowd.</li>
-                            <li>Modern and evergreen logo for your business.</li>
-                        </ul>
+                <div class="row">
+                    <div class="col-md-4 pt-20" v-for="n in 3">
+                        <div class="single-destination relative">
+                            <a href="instagram.com" target="_blank">
+                                <div class="thumb relative">
+                                    <div class="overlay overlay-bg"></div>
+                                    <img class="img-fluid" src="https://instagram.fods1-1.fna.fbcdn.net/vp/341f1dcc791fad4452cede960f7535e3/5D77E4D9/t51.2885-15/sh0.08/e35/s640x640/52559123_202955073997138_5638415260691332924_n.jpg?_nc_ht=instagram.fods1-1.fna.fbcdn.net"
+                                         alt="" >
+                                </div>
+                            </a>
+                            <div class="priceFixed">
+                                <h4 class="text-success">Success</h4>
+                            </div>
+                            <div class="desc">
+                                <h4>Mountain River</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section class="other-issue-area section-gap">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-70 col-lg-9">
+                    <div class="title text-center">
+                        <h1 class="mb-10">Последние статьи</h1>
+                        <p>We all live in an age that belongs to the young at heart. Life that is.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6" v-for="n in 4">
+                    <div class="single-other-issue">
+                        <div class="thumb">
+                            <img class="img-fluid" src="/img/o1.jpg" alt="">
+                        </div>
+                        <a href="#">
+                            <h4>Rent a Car</h4>
+                        </a>
+                        <p>
+                            The preservation of human life is the ultimate value, a pillar of ethics and the foundation.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+    </div>
 </template>
 
 <script>

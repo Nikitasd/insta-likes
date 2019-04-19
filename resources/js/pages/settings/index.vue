@@ -1,5 +1,7 @@
 <template>
 <div>
+    <!-- End banner Area -->
+
     <transition nive="fade" mode="out-in">
         <router-view/>
     </transition>

@@ -1,95 +1,41 @@
 <template>
 <div>
-
-
         <section class="post-content-area pt-20">
-            <div class="row d-flex justify-content-center">
-                <div class="menu-content pb-70 col-lg-9">
-                    <div class="title text-center">
-                        <h2 class="mb-10">Мои публикаци</h2>
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="menu-content pb-70 col-lg-9">
+                        <div class="title text-center">
+                            <h2 class="mb-10">Мои публикации</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
+
+                <b-row>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <b-form-input placeholder="Enter your title" class="mb-4" v-model="filter"></b-form-input>
+                    </div>
+                    <div class="col-md-3">
+                        <b-form-select v-model="sort" :options="options"></b-form-select>
+                    </div>
+
+                </b-row>
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="single-post row">
-                            <div class="col-lg-3  col-md-3 meta-details">
-                                <ul class="tags">
-                                    <li><a href="#">Food,</a></li>
-                                    <li><a href="#">Technology,</a></li>
-                                    <li><a href="#">Politics,</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                </ul>
-                                <div class="user-details row">
-                                    <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-                                    <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-                                    <p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-                                    <p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 ">
-                                <div class="feature-img">
-                                    <img class="img-fluid" src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="">
-                                </div>
-                                <a class="posts-title" href="blog-single.html"><h3>Astronomy Binoculars A Great Alternative</h3></a>
-                                <p class="excert">
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
-                                </p>
-                                <a href="blog-single.html" class="primary-btn">View More</a>
-                            </div>
-                        </div>
-
-                        <div class="single-post row">
-                            <div class="col-lg-3  col-md-3 meta-details">
-                                <ul class="tags">
-                                    <li><a href="#">Food,</a></li>
-                                    <li><a href="#">Technology,</a></li>
-                                    <li><a href="#">Politics,</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                </ul>
-                                <div class="user-details row">
-                                    <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-                                    <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-                                    <p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-                                    <p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 ">
-                                <div class="feature-img">
-                                    <img class="img-fluid" src="https://www.elastic.co/assets/bltada7771f270d08f6/enhanced-buzz-1492-1379411828-15.jpg" alt="">
-                                </div>
-                                <a class="posts-title" href="blog-single.html"><h3>The Basics Of Buying A Telescope</h3></a>
-                                <p class="excert">
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
-                                </p>
-                                <a href="blog-single.html" class="primary-btn">View More</a>
-                            </div>
-                        </div>
-                        <div class="single-post row">
+                        <div class="single-post row" v-for="n in 4">
                             <div class="col-lg-3 col-md-3 meta-details">
-                                <ul class="tags">
-                                    <li><a href="#">Food,</a></li>
-                                    <li><a href="#">Technology,</a></li>
-                                    <li><a href="#">Politics,</a></li>
-                                    <li><a href="#">Lifestyle</a></li>
-                                </ul>
                                 <div class="user-details row">
-                                    <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
                                     <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
                                     <p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-                                    <p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
                                 </div>
                             </div>
-                            <div class="col-lg-9 col-md-9">
-                                <div class="feature-img">
-                                    <img class="img-fluid" src="img/blog/feature-img5.jpg" alt="">
-                                </div>
-                                <a class="posts-title" href="blog-single.html"><h3>Telescopes 101</h3></a>
+                            <div class="col-lg-7 col-md-7 ">
+                                <a class="posts-title" href="blog-single.html"><h4>Astronomy Binoculars A Great Alternative</h4></a>
                                 <p class="excert">
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
+                                    MCSE boot camps have its supporters and its detractors.
+                                    Some people do not understand why you should have to spend money on boot camp when you can get the MCSE
+                                    study materials yourself at a fraction.
                                 </p>
-                                <a href="blog-single.html" class="primary-btn">View More</a>
                             </div>
                         </div>
                         <nav class="blog-pagination justify-content-center d-flex">
@@ -118,74 +64,46 @@
                     </div>
                     <div class="col-lg-4 ">
                         <div class="widget-wrap">
-
-                            <div class="single-sidebar-widget post-category-widget">
-                                <h4 class="category-title">Post Catgories</h4>
-                                <ul class="cat-list">
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Technology</p>
-                                            <p>37</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Lifestyle</p>
-                                            <p>24</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Fashion</p>
-                                            <p>59</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Art</p>
-                                            <p>29</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Food</p>
-                                            <p>15</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Architecture</p>
-                                            <p>09</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Adventure</p>
-                                            <p>44</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="single-sidebar-widget user-info-widget">
-                                <img :src="'img/blog/user-info.png'" alt="">
-                                <a href="#"><h4>Charlie Barber</h4></a>
-                                <p>
-                                    Senior blog writer
-                                </p>
-                                <ul class="social-links">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                </ul>
-                                <p>
-                                    Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits detractors.
-                                </p>
-                                <a href="#" class="genric-btn info circle">Edit</a>
-                            </div>
-                            <div class="single-sidebar-widget ads-widget">
-                                <a href="#"><img class="img-fluid" :src="'/img/blog/ads-banner.jpg'" alt=""></a>
+                            <div class="single-sidebar-widget popular-post-widget">
+                                <h4 class="popular-title">Popular Posts</h4>
+                                <div class="popular-post-list">
+                                    <div class="single-post-list d-flex flex-row align-items-center">
+                                        <div class="thumb">
+                                            <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
+                                        </div>
+                                        <div class="details">
+                                            <a href="blog-single.html"><h6>Space The Final Frontier</h6></a>
+                                            <p>02 Hours ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="single-post-list d-flex flex-row align-items-center">
+                                        <div class="thumb">
+                                            <img class="img-fluid" src="img/blog/pp2.jpg" alt="">
+                                        </div>
+                                        <div class="details">
+                                            <a href="blog-single.html"><h6>The Amazing Hubble</h6></a>
+                                            <p>02 Hours ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="single-post-list d-flex flex-row align-items-center">
+                                        <div class="thumb">
+                                            <img class="img-fluid" src="img/blog/pp3.jpg" alt="">
+                                        </div>
+                                        <div class="details">
+                                            <a href="blog-single.html"><h6>Astronomy Or Astrology</h6></a>
+                                            <p>02 Hours ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="single-post-list d-flex flex-row align-items-center">
+                                        <div class="thumb">
+                                            <img class="img-fluid" src="img/blog/pp4.jpg" alt="">
+                                        </div>
+                                        <div class="details">
+                                            <a href="blog-single.html"><h6>Asteroids telescope</h6></a>
+                                            <p>02 Hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,93 +122,82 @@
         components: {
             'item-card': ItemCard
         },
-        data() {
+        data: function() {
             return {
-                filteredData: [],
-                search: '',
-                result: [
-                    {
-                        name: 'women-shirts',
-                        logo: 'http://res.cloudinary.com/johnayeni/image/upload/v1524501994/vue-logo_uoxef2.png',
-                        stack: [ 'Все записи']
-                    },
-                    {
-                        name: 'women-shirts2',
-                        logo: 'https://instagram.fods1-1.fna.fbcdn.net/vp/d7e656965907c6b3a13ac142a3e8b96d/5D439E3B/t51.2885-15/sh0.08/e35/s640x640/53859476_669804643422572_4755845080822706387_n.jpg?_nc_ht=instagram.fods1-1.fna.fbcdn.net',
-                        stack: [ 'Все записи', 'Активные']
-                    },
-                    {
-                        name: 'nikitos',
-                        logo: 'http://res.cloudinary.com/johnayeni/image/upload/v1524501994/vue-logo_uoxef2.png',
-                        stack: [ 'Все записи', 'Популярные']
-                    },
-                    {
-                        name: 'nikitosPopular',
-                        logo: 'http://res.cloudinary.com/johnayeni/image/upload/v1524501994/vue-logo_uoxef2.png',
-                        stack: [ 'Все записи', 'Популярные']
-                    },
-                    {
-                        name: 'serega',
-                        logo: 'http://res.cloudinary.com/johnayeni/image/upload/v1524501994/vue-logo_uoxef2.png',
-                        stack: [ 'Все записи', 'Популярные']
-                    },
-
+                filter: '',
+                sort: null,
+                options: [
+                    { text: 'Sort by', value: null, disabled: true },
+                    { text: 'Default', value: 'none' },
+                    { text: 'Most Viewed', value: 'views' },
                 ],
-                stacks: [
-                    {
-                        checked: false,
-                        value: 'Все записи'
+                cards: [
+                    {   title: 'Charles Wilson',
+                        countLike: 20,
+                        link: "#",
+                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        views: 312
                     },
                     {
-                        checked: false,
-                        value: 'Активные'
+                        title: 'Tony Domo',
+                        countLike: 25,
+                        link: "#",
+                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        views: 23
                     },
                     {
-                        checked: false,
-                        value: 'Популярные'
+                        title: 'Rump Baker',
+                        link: "#",
+                        countLike: 20,
+                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        views: 231
                     },
+                    {
+                        title: 'Brad Pitt',
+                        link: "#",
+                        countLike: 20,
+                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        views: 443
+                    },
+                    {
+                        title: 'Kermit the Frog',
+                        link: "",
+                        countLike: 20,
+                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        views: 403
+                    },
+                    {
+                        title: 'Taylor Swift',
+                        link: "",
+                        countLike: 20,
+                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        views: 8843
+                    },
+                    {
+                        title: 'Братан',
+                        countLike: 20,
+                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        views: 884
+                    }
                 ]
-            };
+            }
         },
         computed: {
-            selectedFilters: function() {
-                let filters = [];
-                let checkedFiters = this.stacks.filter(obj => obj.checked);
+            getCards() {
 
-                checkedFiters.forEach(element => {
-
-                    filters.push(element.value);
-
-                    element.checked = false;
-
+                var cards = this.cards.filter((player) => {
+                    return player.title.toLowerCase().includes(this.filter.toLowerCase());
                 });
-                return filters;
-            }
-        },
 
-        methods: {
-            getfilteredData: function() {
-
-                this.filteredData = this.result;
-
-                let filteredDataByfilters = [];
-                let filteredDataBySearch = [];
-
-
-                if (this.selectedFilters.length > 0) {
-                    filteredDataByfilters = this.filteredData.filter(obj => this.selectedFilters.every(val => obj.stack.indexOf(val) > -1));
-
-                    this.filteredData = filteredDataByfilters;
+                if (this.sort == 'views') {
+                    return cards.sort(function(a, b) {
+                        return b.views - a.views
+                    });
+                } else {
+                    return cards;
                 }
-                // then filter according to keyword, for now this only affects the name attribute of each data
-                if (this.search !== '') {
-                    filteredDataBySearch = this.filteredData.filter(obj => obj.name.indexOf(this.search.toLowerCase()) >= 0);
-                    this.filteredData = filteredDataBySearch;
-                }
+
             }
-        },
-        mounted() {
-            this.getfilteredData();
         }
     }
 </script>

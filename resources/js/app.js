@@ -4,6 +4,10 @@ import router from '~/router'
 import i18n from '~/plugins/i18n'
 import App from '~/components/App'
 
+import BootstrapVue from 'bootstrap-vue'
+
+Vue.use(BootstrapVue)
+
 import '~/plugins'
 import '~/components'
 

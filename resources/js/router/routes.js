@@ -10,6 +10,7 @@ const Settings = () => import('~/pages/settings/index').then(m => m.default || m
 const SettingsProfile = () => import('~/pages/settings/profile').then(m => m.default || m)
 //const SettingsPassword = () => import('~/pages/settings/password').then(m => m.default || m)
 const SettingsPublication = () => import('~/pages/settings/publication').then(m => m.default || m)
+const SettingsEdit = () => import('~/pages/settings/edit').then(m => m.default || m)
 
 const PostsDetail = () => import('~/pages/posts/detail').then(m => m.default || m)
 const PostsAdd = () => import('~/pages/posts/add').then(m => m.default || m)
@@ -34,7 +35,8 @@ export default [
       { path: '', redirect: { name: 'settings.profile' } },
       { path: 'profile', name: 'settings.profile', component: SettingsProfile },
     //  { path: 'password', name: 'settings.password', component: SettingsPassword },
-      { path: 'publication', name: 'settings.publication', component: SettingsPublication}
+      { path: 'publication', name: 'settings.publication', component: SettingsPublication},
+      { path: 'edit', name: 'settings.edit', component: SettingsEdit}
     ] },
 
     { path: '/posts',
