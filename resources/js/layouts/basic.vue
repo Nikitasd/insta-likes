@@ -1,30 +1,72 @@
 <template>
-  <div class="basic-layout d-flex align-items-center justify-content-center m-0 bg-white">
-    <child/>
+  <div class="main-layout">
+    <navbar/>
+
+      <section class="relative blog-home-banner"> <!--Не забудь о консоли. Там ошибка из-за этого--->
+          <div class="overlay overlay-bg"></div>
+          <div class="container">
+              <div class="row">
+
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-3">
+                      <div class="about-content blog-header-content pt-20">
+                          <img src="/img/blog/user-info.png" alt="">
+                          <h4>{{ user.username }}</h4>
+                          <p class="text-white">
+                              Senior blog writer aga
+                          </p>
+                          <router-link :to="{name: 'settings.edit'}" class="genric-btn info circle">Edit</router-link>
+                      </div>
+                  </div>
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-2" v-for="(tab) in tabs">
+                      <div class="about-content text-center pt-80" >
+                          <h3 class="text-white">{{ tab.count }}</h3>
+                          <router-link :to="{name: tab.name}" class="text-white">
+                              {{ tab.title }}
+                          </router-link>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+     <child/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'BasicLayout'
-}
+    import { mapGetters } from 'vuex'
+    import Navbar from '~/components/Navbar'
+
+    export default {
+        middleware: 'auth',
+
+        components: {
+            Navbar
+        },
+        name: 'BasicLayout',
+
+        data: function() {
+            return {
+                tabs: [
+                    {
+                        icon: 'lock',
+                        title: "Публикации ",
+                        name: 'publication',
+                        count: 20
+                    },
+                    {
+                        icon: 'user',
+                        title: "Статьи",
+                        name: 'article',
+                        count: 25
+                    }
+                ],
+            }
+        },
+        computed: mapGetters({
+            user: 'auth/user'
+        }),
+    }
 </script>
-
-<style lang="scss">
-.basic-layout {
-  color: #636b6f;
-  height: 100vh;
-  font-weight: 100;
-  position: relative;
-
-  .links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-}
-</style>

@@ -32,6 +32,7 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "acorn-jsx": "^5.0.1",
     "babel-eslint": "^8.0.2",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "cross-env": "^5.1.5",
@@ -42,6 +43,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^5.2.2",
+    "img-loader": "^3.0.1",
     "laravel-mix": "^2.1.11",
     "vue-template-compiler": "^2.6.10",
     "webpack-bundle-analyzer": "^2.11.2"

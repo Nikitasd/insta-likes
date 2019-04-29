@@ -29,7 +29,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        $userId = User::where("name", $this->credentials($request))->value("id");
+        $userId = User::where("username", $this->credentials($request))->value("id");
 
         //$token = $this->guard()->attempt($this->credentials($request));
 

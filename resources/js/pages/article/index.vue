@@ -1,11 +1,10 @@
 <template>
-<div>
         <section class="post-content-area pt-20">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="menu-content pb-70 col-lg-9">
                         <div class="title text-center">
-                            <h2 class="mb-10">Мои публикации</h2>
+                            <h2 class="mb-10">Мои статьи</h2>
                         </div>
                     </div>
                 </div>
@@ -21,6 +20,7 @@
 
                 </b-row>
                 <div class="row">
+                    <div class="col-lg-1"></div>
                     <div class="col-lg-8">
                         <div class="single-post row" v-for="n in 4">
                             <div class="col-lg-3 col-md-3 meta-details">
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 ">
-                                <a class="posts-title" href="blog-single.html"><h4>Astronomy Binoculars A Great Alternative</h4></a>
+                                <router-link class="posts-title" :to="{name: 'article.edit'}"><h4>Astronomy Binoculars A Great Alternative</h4></router-link>
                                 <p class="excert">
                                     MCSE boot camps have its supporters and its detractors.
                                     Some people do not understand why you should have to spend money on boot camp when you can get the MCSE
@@ -62,7 +62,7 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="col-lg-4 ">
+                    <div class="col-lg-3 ">
                         <div class="widget-wrap">
                             <div class="single-sidebar-widget popular-post-widget">
                                 <h4 class="popular-title">Popular Posts</h4>
@@ -110,18 +110,13 @@
                 </div>
             </div>
         </section>
-
-</div>
 </template>
 
 <script>
-    import ItemCard from "../../components/ItemCard";
-
 
     export default {
-        components: {
-            'item-card': ItemCard
-        },
+        layout: 'basic',
+
         data: function() {
             return {
                 filter: '',
@@ -135,48 +130,48 @@
                     {   title: 'Charles Wilson',
                         countLike: 20,
                         link: "#",
-                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
                         views: 312
                     },
                     {
                         title: 'Tony Domo',
                         countLike: 25,
                         link: "#",
-                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
                         views: 23
                     },
                     {
                         title: 'Rump Baker',
                         link: "#",
                         countLike: 20,
-                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
                         views: 231
                     },
                     {
                         title: 'Brad Pitt',
                         link: "#",
                         countLike: 20,
-                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
                         views: 443
                     },
                     {
                         title: 'Kermit the Frog',
                         link: "",
                         countLike: 20,
-                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
                         views: 403
                     },
                     {
                         title: 'Taylor Swift',
                         link: "",
                         countLike: 20,
-                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
                         views: 8843
                     },
                     {
                         title: 'Братан',
                         countLike: 20,
-                        image: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                        thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
                         views: 884
                     }
                 ]

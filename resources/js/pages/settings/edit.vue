@@ -1,35 +1,32 @@
 <template>
+    <section class="post-content-area single-post-area">
     <div class="container">
         <div class="row pt-30">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-3">
+            <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
-                    <div class="single-sidebar-widget post-category-widget">
-                        <ul class="cat-list">
-                            <li v-for="n in 3">
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Technology</p>
-                                    <p>37</p>
-                                </a>
-                            </li>
-                        </ul>
+                <div class="single-sidebar-widget post-category-widget">
+                    <ul class="cat-list">
+                        <li v-for="n in 3">
+                            <a href="#" class="d-flex justify-content-between">
+                                <p>Technology</p>
+                                <p>37</p>
+                            </a>
+                        </li>
+                    </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <form class="form-area contact-form text-right" id="myForm" action="mail.php" method="post">
+            <div class="col-lg-5 col-md-6 banner-right">
+            <form class="form-wrap">
+                <input type="text" class="form-control" name="name" placeholder="From " onfocus="this.placeholder = ''" onblur="this.placeholder = 'From '" v-for="n in 3">
+                <a href="#" class="primary-btn text-uppercase">Search flights</a>
+            </form>
+    </div>
 
-                    <div class="input-group pt-20 " v-for="v in 3">
-                        <div class="input-group-prepend ">
-                            <div class="input-group-text ">Email</div>
-                        </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email"
-                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
-                    </div>
-                </form>
-            </div>
+
         </div>
     </div>
+    </section>
 </template>
 
 <script>

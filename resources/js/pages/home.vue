@@ -11,54 +11,72 @@
 
                 <div class="col-lg-2"></div>
                 <div class="col-lg-2 pb-70">
-                        <router-link :to="{name: 'posts.add'}" class="btn btn-success">Добавить</router-link>
+                    <router-link :to="{name: 'publication.add'}" class="btn btn-success">Добавить</router-link>
                 </div>
-
             </div>
             <div class="row">
-
-                <div class="col-md-4 pt-20" v-for="n in 3">
-                    <div class="single-destination relative">
-                        <div class="thumb relative">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="https://instagram.fods1-1.fna.fbcdn.net/vp/341f1dcc791fad4452cede960f7535e3/5D77E4D9/t51.2885-15/sh0.08/e35/s640x640/52559123_202955073997138_5638415260691332924_n.jpg?_nc_ht=instagram.fods1-1.fna.fbcdn.net"
-                                 alt="">
-                        </div>
-                        <div class="priceFixed">
-                            <h4 class="text-dark text-italic">+150</h4>
-                        </div>
-                        <div class="desc">
-                            <h4>Mountain River</h4>
-                            <p>Paraguay</p>
-                        </div>
-                        <div class="check">
-                            <button href="#" class="btn-xs btn-warning ">Проверка</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 pt-20" v-for="n in 4">
-                    <div class="single-destination relative">
-                        <a href="instagram.com" target="_blank">
-                        <div class="thumb relative">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="img/d1.jpg" alt="" >
-                        </div>
-                        </a>
-                        <div class="priceFixed">
-                            <h4 class="text-light">+150</h4>
-                        </div>
-                        <div class="desc">
-                            <h4>Mountain River</h4>
-                        </div>
-
-                        <div class="check">
-                            <button href="#" class="btn-xs btn-warning ">Проверка</button>
-                        </div>
-                    </div>
+                <div class="col-md-4 pt-30" v-for="(card, index) in cards"  :key="index">
+                    <card :card="card" :cardButton="'Проверить'"></card>
                 </div>
             </div>
         </div>
     </section>
 </template>
 
+<script>
 
+    export default {
+        data: () => ({
+            cards: [
+                {   title: 'Charles Wilson',
+                    cost: 20,
+                    route: "#",
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 312
+                },
+                {
+                    title: 'Tony Domo',
+                    cost: 25,
+                    route: "#",
+                    thumbnail_url: 'https://instagram.fods1-1.fna.fbcdn.net/vp/9638015ab9adc5b8838f1072dd8f6d87/5D718122/t51.2885-15/sh0.08/e35/s640x640/49663039_1174014882765919_6624389624474183525_n.jpg?_nc_ht=instagram.fods1-1.fna.fbcdn.net',
+                    views: 23
+                },
+                {
+                    title: 'Rump Baker',
+                    route: "#",
+                    cost: 20,
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 231
+                },
+                {
+                    title: 'Brad Pitt',
+                    route: "#",
+                    cost: 20,
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 443
+                },
+                {
+                    title: 'Kermit the Frog',
+                    route: "",
+                    cost: 20,
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 403
+                },
+                {
+                    title: 'Taylor Swift',
+                    route: "",
+                    cost: 20,
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 8843
+                },
+                {
+                    title: 'Братан',
+                    cost: 20,
+                    route: "",
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 884
+                }
+            ]
+        }),
+    }
+</script>
