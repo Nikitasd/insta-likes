@@ -10,57 +10,16 @@
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-3 meta-details">
-                            <ul class="tags">
-                                <li><a href="#">Food,</a></li>
-                                <li><a href="#">Technology,</a></li>
-                                <li><a href="#">Politics,</a></li>
-                                <li><a href="#">Lifestyle</a></li>
-                            </ul>
                             <div class="user-details row">
-                                <p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
                                 <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-                                <p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-                                <p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-                                <ul class="social-links col-lg-12 col-md-12 col-6">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                </ul>
+                                <p class="view col-lg-12 col-md-12 col-6"><a href="#">{{ article.view_count }} views</a> <span class="lnr lnr-eye"></span></p>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-9">
-                            <h3 class="mt-20 mb-20">Astronomy Binoculars A Great Alternative</h3>
+                            <h3 class="mt-20 mb-20">{{ article.title }}</h3>
                             <p class="excert">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
+                                {{ article.content }}
                             </p>
-                            <p>
-                                Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                            </p>
-                            <p>
-                                Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                            </p>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="quotes">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.
-                            </div>
-                            <div class="row mt-30 mb-30">
-                                <div class="col-6">
-                                    <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
-                                </div>
-                                <div class="col-6">
-                                    <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
-                                </div>
-                                <div class="col-lg-12 mt-30">
-                                    <p>
-                                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower.
-                                    </p>
-                                    <p>
-                                        MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower.
-                                    </p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="navigation-area">
@@ -202,75 +161,7 @@
                         <div class="single-sidebar-widget ads-widget">
                             <a href="#"><img class="img-fluid" src="img/blog/ads-banner.jpg" alt=""></a>
                         </div>
-                        <div class="single-sidebar-widget post-category-widget">
-                            <h4 class="category-title">Post Catgories</h4>
-                            <ul class="cat-list">
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Technology</p>
-                                        <p>37</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Lifestyle</p>
-                                        <p>24</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Fashion</p>
-                                        <p>59</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Art</p>
-                                        <p>29</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Food</p>
-                                        <p>15</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Architecture</p>
-                                        <p>09</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Adventure</p>
-                                        <p>44</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="single-sidebar-widget newsletter-widget">
-                            <h4 class="newsletter-title">Newsletter</h4>
-                            <p>
-                                Here, I focus on a range of items and features that we use in life without
-                                giving them a second thought.
-                            </p>
-                            <div class="form-group d-flex flex-row">
-                                <div class="col-autos">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" >
-                                    </div>
-                                </div>
-                                <a href="#" class="bbtns">Subcribe</a>
-                            </div>
-                            <p class="text-bottom">
-                                You can unsubscribe at any time
-                            </p>
-                        </div>
+
                         <div class="single-sidebar-widget tag-cloud-widget">
                             <h4 class="tagcloud-title">Tag Clouds</h4>
                             <ul>
@@ -295,9 +186,30 @@
     </section>
 </template>
 <script>
+import axios from 'axios'
 
 export default {
+
 layout: 'basic',
+
+    data: function() {
+    return {
+        article: {}
+    }
+    },
+    methods: {
+        getData() {
+            axios.get('/api/articles/' + this.$route.params.slug).then(response => {
+                this.article = response.data;
+            })
+        }
+    },
+
+    created(){
+        this.getData();
+
+    },
+
 }
 
 </script>

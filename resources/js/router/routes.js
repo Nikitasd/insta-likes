@@ -11,7 +11,7 @@ const SettingsEdit = () => import('~/pages/settings/edit').then(m => m.default |
 
 
 const Article = () => import('~/pages/article/index').then(m => m.default || m)
-const ArticleEdit = () => import('~/pages/article/edit').then(m => m.default || m)
+const ArticleShow = () => import('~/pages/article/show').then(m => m.default || m)
 
 const Publication = () => import('~/pages/publication/index').then(m => m.default || m)
 const PublicationAdd = () => import('~/pages/publication/add').then(m => m.default || m)
@@ -42,7 +42,7 @@ export default [
             { path: '/p/add', name: 'publication.add', component: PublicationAdd },
 
             { path: '/a/', name: 'article', component: Article },
-            { path: '/a/edit', name: 'article.edit', component: ArticleEdit },
+            { path: '/a/:slug', name: 'article.show', component: ArticleShow },
 
 
     { path: '/posts',
