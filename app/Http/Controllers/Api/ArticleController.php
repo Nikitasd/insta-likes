@@ -2,30 +2,32 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Article;
-use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+use App\Http\Resources\ArticleResource;
+use App\Http\Resources\ArticlesResource;
+use Illuminate\Http\Response;
 
 
 class ArticleController extends Controller
 {
-    public function index($currentPage, $limit)
+    public function index()
     {
 
-        Paginator::currentPageResolver(function() use ($currentPage) {
-            return $currentPage;
-        });
-
-        $articles = Article::where("published", true)->paginate($limit);
+        $articles = Article::with([
+            'user:users.id,users.username',
+        ])->advancedFilter();
 
 
-        return $articles;
+        $collection = ArticleResource::collection($articles);
 
-
+        return $collection->response()
+            ->setStatusCode(Response::HTTP_PARTIAL_CONTENT);
     }
-    public function show($slug)
+
+    public function show(Article $article)
     {
-        return Article::where("slug", $slug)->first();
+        ArticleResource::withoutWrapping();
+        return new ArticleResource($article);
     }
 }

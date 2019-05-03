@@ -23,8 +23,14 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
 
-    Route::get('/articles/_page={currentPage}&_limit={limit}', "Api\ArticleController@index");
-    Route::get('/articles/{slug}', "Api\ArticleController@show");
+    //Route::get('/articles', "Api\ArticleController@index");
+
+    //Route::get('/articles/_page={currentPage?}&_limit={limit?}', "Api\ArticleController@index");
+   // Route::get('/articles/{slug}', "Api\ArticleController@show");
+
+   // Route::resource("/articles", "Api\ArticleController");
+
+    Route::apiResource('articles', "Api\ArticleController");
 
 });
 

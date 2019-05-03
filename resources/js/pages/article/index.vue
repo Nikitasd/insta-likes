@@ -21,37 +21,30 @@
             </b-row>
             <div class="row">
                 <div class="col-lg-1"></div>
-                <div class="col-lg-8">
-                    <div class="single-post row" v-for="(article, index) in articles.data" :key="index">
-                        <div class="col-lg-3 col-md-3 meta-details">
-                            <div class="user-details row">
-                                <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-                                <p class="view col-lg-12 col-md-12 col-6"><a href="#">{{ article.view_count }} Views</a> <span class="lnr lnr-eye"></span></p>
+                <div class="col-lg-8 pb-100" >
+                    <div class="single-post row " v-for="(article, index) in articles.data" :key="index">
+                            <div class="col-lg-3 col-md-3 meta-details">
+                                <div class="user-details row">
+                                    <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
+                                    <p class="view col-lg-12 col-md-12 col-6"><a href="#">{{ article.attributes.view_count }} Views</a> <span class="lnr lnr-eye"></span></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 ">
+                                <router-link class="posts-title" :to="{name: 'article.show', params: {slug: article.attributes.slug }}">
+                                    <h4>{{ article.attributes.title }}</h4>
+                                </router-link>
+
+                                <p class="excert">
+                                    {{ article.attributes.content | truncate(220, '....') }}
+                                </p>
+
                             </div>
                         </div>
-                        <div class="col-lg-7 col-md-7 ">
-                            <router-link class="posts-title" :to="{name: 'article.show', params: {slug: article.slug }}"><h4>{{ article.title }}</h4></router-link>
 
-                            <p class="excert">
-                                {{ article.content | truncate(220, '....') }}
-                            </p>
-
-                        </div>
-                    </div>
-
-                    <b-pagination
-                            v-model="currentPage"
-                            :total-rows="rows"
-                            first-text="⏮"
-                            prev-text="⏪"
-                            next-text="⏩"
-                            last-text="⏭"
-                            :per-page="perPage"
-                            align="right"
-                            class="pb-50"
-                    ></b-pagination>
+                    <a @click="nextPage" class="primary-btn" v-if="nextEnable">View More</a>
 
                 </div>
+
                 <div class="col-lg-3 ">
                     <div class="widget-wrap">
                         <div class="single-sidebar-widget popular-post-widget">
@@ -78,6 +71,7 @@
 
 <script>
 
+
     export default {
         layout: 'basic',
 
@@ -91,8 +85,7 @@
                     { text: 'Most Viewed', value: 'views' },
                 ],
                 articles: [],
-
-                currentPage: 1,
+                nextEnable: true,
                 perPage: 4 //10
 
             }
@@ -100,27 +93,29 @@
         created() {
             this.fetchData();
         },
-        watch: {
-            currentPage: {
-                handler: function(value) {
-                    this.fetchData().catch(error => {
-                        console.error(error)
-                    })
-                }
-            }
-        },
         methods: {
             async fetchData() {
-                this.articles = await fetch(`/api/articles/_page=${this.currentPage}&_limit=${this.perPage}`)
+                this.articles = await fetch(`/api/articles?limit=${this.perPage}`)
                     .then(res => {
-                        return res.json()
-                    }).then(articles => articles)
-            }
-        },
 
+                        return res.json();
+
+                    }).then(articles => articles)
+            },
+          nextPage(){
+                if(this.perPage < this.articlesTotal) {
+                    this.perPage += 4;
+
+                  this.fetchData();
+                } else
+                    this.nextEnable = false;
+
+            },
+
+        },
         computed: {
-            rows() {
-                return this.articles.total;
+            articlesTotal() {
+                return this.articles.meta.total;
             }
         },
 
