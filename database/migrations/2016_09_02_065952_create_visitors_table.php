@@ -15,8 +15,8 @@ class CreateVisitorsTable extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('page_id')->unsigned();
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->integer('publication_id')->unsigned();
+            $table->foreign('publication_id')->references('id')->on('publications')->onDelete('cascade');
             $table->string('ip', 32);
             $table->string('country')->nullable();
             $table->integer('clicks')->unsigned()->default(1);

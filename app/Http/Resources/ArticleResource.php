@@ -15,19 +15,18 @@ class ArticleResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'type'          => 'articles',
+            'id'            => (string)$this->id,
+            'slug'            => $this->slug,
             'attributes'    => [
-                'id' => (string)$this->id,
                 'title' => $this->title,
-                'slug' => $this->slug,
                 'view_count'=> $this->view_count,
                 'content'=> $this->content,
             ],
 
            'relationships' => new ArticleRelationshipResource($this),
-            'links'         => [
-                'self' => route('articles.show', ['article' => $this->id]),
-            ],
-            'count' => $this->count(),
+
+            'link'         => [ route('articles.show', ['article' => $this->id]) ],
         ];
     }
 }

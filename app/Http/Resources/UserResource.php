@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class UserIdentifierResource extends JsonResource
+class UserResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -18,6 +18,11 @@ class UserIdentifierResource extends JsonResource
         return [
             'type'       => 'user',
             'id'         => (string)$this->id,
+
+            'attributes' => [
+                'username' => $this->username,
+            ],
+
         ];
     }
 }

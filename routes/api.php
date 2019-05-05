@@ -14,23 +14,23 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'auth:api'], function () {
+
     Route::post('logout', 'Auth\LoginController@logout');
 
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::resource('articles', "Api\ArticleController");
 
-    Route::patch('settings/profile', 'Settings\ProfileController@update');
-    Route::patch('settings/password', 'Settings\PasswordController@update');
+    Route::get(
+        'articles/{article}/comments',
+        [
+            'uses' => "Api\ArticleRelationshipController@comments",
+            'as' => 'articles.comments'
+        ]
+    );
 
-    //Route::get('/articles', "Api\ArticleController@index");
 
-    //Route::get('/articles/_page={currentPage?}&_limit={limit?}', "Api\ArticleController@index");
-   // Route::get('/articles/{slug}', "Api\ArticleController@show");
-
-   // Route::resource("/articles", "Api\ArticleController");
-
-    Route::apiResource('articles', "Api\ArticleController");
 
 });
 

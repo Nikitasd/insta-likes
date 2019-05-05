@@ -4,20 +4,21 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserIdentifierResource extends JsonResource
+class CommentRelationshipResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
         return [
-            'type'       => 'user',
-            'id'         => (string)$this->id,
+            'user'   => [
+                'data'  => new UserIdentifierResource($this->user),
+            ],
+
         ];
     }
 }

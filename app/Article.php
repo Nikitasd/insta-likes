@@ -38,6 +38,11 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function scopeAdvancedFilter($query)
     {
         $data = $this->validateAdvancedFilter(request()->all());
@@ -51,10 +56,16 @@ class Article extends Model
 
         $validator = validator()->make($request, [
             'limit' => 'sometimes|required|integer|min:1',
-            'page' => 'sometimes|required|integer|min:1',
+          //  'page' => 'sometimes|required|integer|min:1',
         ]);
 
 
         return $validator->validate();
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 }

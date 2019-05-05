@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 ">
-                                <router-link class="posts-title" :to="{name: 'article.show', params: {slug: article.attributes.slug }}">
+                                <router-link class="posts-title" :to="{name: 'article.show', params: {slug: article.slug }}">
                                     <h4>{{ article.attributes.title }}</h4>
                                 </router-link>
 
@@ -86,7 +86,7 @@
                 ],
                 articles: [],
                 nextEnable: true,
-                perPage: 4 //10
+                perPage: 10
 
             }
         },
