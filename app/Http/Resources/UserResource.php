@@ -16,11 +16,13 @@ class UserResource extends Resource
     public function toArray($request)
     {
         return [
-            'type'       => 'user',
+            'type'       => 'users',
             'id'         => (string)$this->id,
 
             'attributes' => [
                 'username' => $this->username,
+                'avatar' => $this->avatar,
+                'instagram_link' => $this->instagram_link,
             ],
 
         ];

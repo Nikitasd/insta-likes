@@ -9,9 +9,9 @@
                 </div>
             </div>
 
-            <b-row>
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
+
+            <b-row class="d-flex justify-content-center">
+                <div class="col-md-3 ">
                     <b-form-input placeholder="Enter your title" class="mb-4" v-model="filter"></b-form-input>
                 </div>
                 <div class="col-md-3">
@@ -19,27 +19,18 @@
                 </div>
 
             </b-row>
+
             <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-8 pb-100" >
-                    <div class="single-post row " v-for="(article, index) in articles.data" :key="index">
-                            <div class="col-lg-3 col-md-3 meta-details">
-                                <div class="user-details row">
-                                    <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-                                    <p class="view col-lg-12 col-md-12 col-6"><a href="#">{{ article.attributes.view_count }} Views</a> <span class="lnr lnr-eye"></span></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 col-md-7 ">
-                                <router-link class="posts-title" :to="{name: 'article.show', params: {slug: article.slug }}">
-                                    <h4>{{ article.attributes.title }}</h4>
-                                </router-link>
+                <div class="col-lg-8 pb-100">
 
-                                <p class="excert">
-                                    {{ article.attributes.content | truncate(220, '....') }}
-                                </p>
-
-                            </div>
-                        </div>
+                    <template v-if="articles">
+                        <article-content
+                                v-for="(article, index) in articles.data"
+                                :key="index"
+                                :article="article.attributes"
+                                :contentTruncate="255"
+                        ></article-content>
+                    </template>
 
                     <a @click="nextPage" class="primary-btn" v-if="nextEnable">View More</a>
 
@@ -71,9 +62,13 @@
 
 <script>
 
+    import ArticleContent from './Content'
+    import {mapGetters} from 'vuex';
 
     export default {
         layout: 'basic',
+
+        components: { ArticleContent },
 
         data: function() {
             return {
@@ -84,45 +79,38 @@
                     { text: 'Default', value: 'none' },
                     { text: 'Most Viewed', value: 'views' },
                 ],
-                articles: [],
                 nextEnable: true,
-                perPage: 10
+                perPage: 4
 
             }
         },
-        created() {
-            this.fetchData();
-        },
+
         methods: {
-            async fetchData() {
-                this.articles = await fetch(`/api/articles?limit=${this.perPage}`)
-                    .then(res => {
 
-                        return res.json();
-
-                    }).then(articles => articles)
+            async fetchArticles () {
+                // Fetch the article.
+                await this.$store.dispatch('article/fetchArticles', this.perPage)
             },
+
           nextPage(){
-                if(this.perPage < this.articlesTotal) {
+                if(this.perPage < 5) {
                     this.perPage += 4;
 
-                  this.fetchData();
+                 // this.fetchData();
                 } else
                     this.nextEnable = false;
 
             },
 
         },
-        computed: {
-            articlesTotal() {
-                return this.articles.meta.total;
-            }
+        computed: mapGetters({
+            articles: 'article/article'
+        }),
+
+        created() {
+            this.fetchArticles();
         },
 
-        filters: {
-            truncate: function (text, length, suffix) {
-                return text.substring(0, length) + suffix;
-            },
-        }
+
     }
 </script>

@@ -19,9 +19,9 @@ class CommentResource extends JsonResource
             'type'          => 'comments',
             'id'            => (string)$this->id,
             'attributes' => [
-                'content' => $this->id,
+                'content' => $this->content,
             ],
-           // 'relationships' => new CommentRelationshipResource($this),
+            'relationships' => new CommentRelationshipResource($this),
         ];
     }
 }

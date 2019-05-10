@@ -26,11 +26,9 @@ class CommentsResource extends ResourceCollection
         $included  = $this->collection->map(
             function ($article) {
                 return $article->user;
-            }
-        )->unique();
+            })->unique();
 
         return [
-
             'included' => $this->withIncluded($included),
         ];
     }

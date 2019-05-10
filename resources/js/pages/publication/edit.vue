@@ -20,15 +20,11 @@
 <script>
     import Form from 'vform'
     import { mapGetters } from 'vuex'
-    import Modal from '~/components/Modal'
 
     export default {
         scrollToTop: false,
         layout: 'basic',
 
-        components: {
-            Modal
-        },
 
         metaInfo () {
             return { title: this.$t('settings') }

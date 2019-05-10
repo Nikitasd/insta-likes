@@ -3,62 +3,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 posts-list">
-                    <div class="single-post row">
-                        <div class="col-lg-12">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="img/blog/feature-img1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-3  col-md-3 meta-details">
-                            <div class="user-details row">
-                                <p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-                                <p class="view col-lg-12 col-md-12 col-6"><a href="#">{{ article.view_count }} views</a> <span class="lnr lnr-eye"></span></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9">
-                            <h3 class="mt-20 mb-20">{{ article.title }}</h3>
-                            <p class="excert">
-                                {{ article.content }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="comments-area background-white mt-100">
-                        <h4>{{ comments.length }} Comments</h4>
 
-                        <div class="comment-list" v-for="(comment, index) in comments.data" :key="index">
-                            <div class="single-comment justify-content-between d-flex" >
-                                <div class="user justify-content-between d-flex" >
-                                    <div class="thumb">
-                                        <img src="/img/blog/c1.jpg" :title="index">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">{{ comments.included[index].attributes.username }}</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            {{ comment.attributes.content }}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">reply</a>
-                                </div>
-                            </div>
-                        </div>
+                    <template v-if="article">
+                        <article-content :article="article.attributes"></article-content>
+                    </template>
+
+                    <div class="comments-area background-white mt-100" v-if="comments">
+                        <h4>3 Comments</h4>
+
+                        <article-comment
+                                v-for="(comment, index) in comments.data"
+                                :key="index"
+                                :comment="comment.attributes"
+                                :user="comments.included[index]">
+                        </article-comment>
+
                     </div>
+
                     <div class="comment-form">
                         <h4>Leave a Comment</h4>
                         <form>
-                            <div class="form-group form-inline">
-                                <div class="form-group col-lg-6 col-md-12 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-                                </div>
-                                <div class="form-group col-lg-6 col-md-12 email">
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-                            </div>
                             <div class="form-group">
                                 <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
                             </div>
@@ -121,35 +85,52 @@
     </section>
 </template>
 <script>
+    import ArticleContent from './Content'
+    import ArticleComment from './Comment'
 
-export default {
+    import {mapGetters} from 'vuex';
+    import axios from 'axios'
 
-layout: 'basic',
 
-    data: function() {
-    return {
-        article: [],
-        comments: [],
-    }
-    },
-    methods: {
-        async fetchArticle() {
-            this.article = await fetch('/api/articles/' + this.$route.params.slug).then(res => {
-                return res.json();
-            }).then(article => article.attributes)
+    export default {
+
+        layout: 'basic',
+
+        components: { ArticleContent, ArticleComment },
+
+        data: function() {
+            return {
+                comments: [],
+            }
         },
-        async fetchComments(){
-            this.comments = await fetch('/api/articles/' + this.$route.params.slug + '/comments').then(res => {
-                return res.json();
-            }).then(comments => comments)
-        }
-    },
+        methods: {
+            async fetchArticle () {
+                // Fetch the articles.
+                await this.$store.dispatch('article/fetchArticle', this.$route.params.slug)
+            },
+            async fetchComments(){
+                this.comments = await axios.get('/api/articles/' + this.$route.params.slug + '/comments')
+                    .then(comments => comments.data);
 
-    created() {
-        this.fetchArticle();
-        this.fetchComments();
-    },
+                console.log(this.comments);
+            },
 
-}
+        },
+
+        computed: {
+            ...mapGetters({
+                article: 'article/article'
+            }),
+
+        },
+
+
+        mounted() {
+            this.fetchArticle();
+
+            this.fetchComments();
+        },
+
+    }
 
 </script>

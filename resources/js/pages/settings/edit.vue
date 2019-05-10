@@ -30,13 +30,8 @@
 </template>
 
 <script>
-    import ItemCard from "../../components/ItemCard";
-
 
     export default {
-        components: {
-            'item-card': ItemCard
-        },
         data: function () {
             return {
                 filter: '',

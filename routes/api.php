@@ -21,12 +21,19 @@ Route::group(['middleware' => 'auth:api'], function () {
         return $request->user();
     });
     Route::resource('articles', "Api\ArticleController");
-
     Route::get(
         'articles/{article}/comments',
         [
             'uses' => "Api\ArticleRelationshipController@comments",
             'as' => 'articles.comments'
+        ]
+    );
+
+    Route::get(
+        'users/{user}',
+        [
+            'uses' => "Api\UserController@show",
+            'as' => 'users.show'
         ]
     );
 

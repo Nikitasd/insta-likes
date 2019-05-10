@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import Navbar from '~/components/Navbar'
+    import Navbar from '~/dashboard/components/shared/Navbar'
 
     export default {
         name: 'MainLayout',

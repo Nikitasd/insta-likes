@@ -18,38 +18,28 @@ const PublicationAdd = () => import('~/pages/publication/add').then(m => m.defau
 const PublicationEdit = () => import('~/pages/publication/edit').then(m => m.default || m)
 
 
-const PostsDetail = () => import('~/pages/posts/detail').then(m => m.default || m)
-const App = () => import('~/pages/App.vue').then(m => m.default || m)
-
 
 export default [
-  { path: '/', name: 'welcome', component: Welcome },
+    { path: '/', name: 'welcome', component: Welcome },
 
-  { path: '/login', name: 'login', component: Login },
+    { path: '/login', name: 'login', component: Login },
 
-  { path: '/home', name: 'home', component: Home },
+    { path: '/home', name: 'home', component: Home },
 
     { path: '/settings',
-    component: Settings,
-    children: [
-      { path: '', redirect: { name: 'settings.profile' } },
-
-        { path: 'edit', name: 'settings.edit', component: SettingsEdit},
-    ]},
-
-            { path: '/p/', name: 'publication', component: Publication},
-            { path: '/p/edit', name: 'publication.edit', component: PublicationEdit},
-            { path: '/p/add', name: 'publication.add', component: PublicationAdd },
-
-            { path: '/a/', name: 'article', component: Article },
-            { path: '/a/:slug', name: 'article.show', component: ArticleShow },
-
-
-    { path: '/posts',
-        component: App,
+        component: Settings,
         children: [
-            { path: 'detail', name: 'posts.detail', component: PostsDetail },
+            { path: '', redirect: { name: 'settings.profile' } },
+
+            { path: 'edit', name: 'settings.edit', component: SettingsEdit},
         ]},
 
-  { path: '*', component: NotFound }
+    { path: '/p/', name: 'publication', component: Publication},
+    { path: '/p/edit', name: 'publication.edit', component: PublicationEdit},
+    { path: '/p/add', name: 'publication.add', component: PublicationAdd },
+
+    { path: '/a/', name: 'article', component: Article },
+    { path: '/a/:slug', name: 'article.show', component: ArticleShow },
+
+    { path: '*', component: NotFound }
 ]

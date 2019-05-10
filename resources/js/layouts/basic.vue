@@ -5,20 +5,17 @@
       <section class="relative blog-home-banner"> <!--Не забудь о консоли. Там ошибка из-за этого--->
           <div class="overlay overlay-bg"></div>
           <div class="container">
-              <div class="row">
-
-                  <div class="col-lg-1"></div>
+              <div class="row justify-content-center">
                   <div class="col-lg-3">
                       <div class="about-content blog-header-content pt-20">
-                          <img src="/img/blog/user-info.png" alt="">
+                          <img :src="user.avatar" alt="" width="120" height="120">
                           <h4>{{ user.username }}</h4>
                           <p class="text-white">
-                              Senior blog writer aga
+                              {{ user.instagram_link }}
                           </p>
                           <router-link :to="{name: 'settings.edit'}" class="genric-btn info circle">Edit</router-link>
                       </div>
                   </div>
-                  <div class="col-lg-1"></div>
                   <div class="col-lg-2" v-for="(tab) in tabs">
                       <div class="about-content text-center pt-80" >
                           <h3 class="text-white">{{ tab.count }}</h3>
@@ -37,7 +34,7 @@
 
 <script>
     import { mapGetters } from 'vuex'
-    import Navbar from '~/components/Navbar'
+    import Navbar from '~/dashboard/components/shared/Navbar'
 
     export default {
         middleware: 'auth',
@@ -45,7 +42,6 @@
         components: {
             Navbar
         },
-        name: 'BasicLayout',
 
         data: function() {
             return {
