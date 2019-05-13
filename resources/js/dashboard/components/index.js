@@ -4,6 +4,7 @@ import Tab from './Tab'
 import Child from './Child'
 import Button from './Button'
 import Checkbox from './Checkbox'
+import ArticleMy from './Article'
 import { HasError, AlertError, AlertSuccess } from 'vform'
 
 // Components that are registered globaly.
@@ -13,6 +14,7 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
     Child,
     Button,
     Checkbox,
+    ArticleMy,
     HasError,
     AlertError,
     AlertSuccess

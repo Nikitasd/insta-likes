@@ -21,12 +21,12 @@
             </b-row>
 
             <div class="row">
-                <div class="col-lg-8 pb-100">
+                <div class="col-lg-7 pb-100">
 
                     <template v-if="articles">
                         <article-content
-                                v-for="(article, index) in articles.data"
-                                :key="index"
+                                v-for="article in articles.data"
+                                :key="article.id"
                                 :article="article.attributes"
                                 :contentTruncate="255"
                         ></article-content>
@@ -36,7 +36,7 @@
 
                 </div>
 
-                <div class="col-lg-3 ">
+                <div class="col-lg-4">
                     <div class="widget-wrap">
                         <div class="single-sidebar-widget popular-post-widget">
                             <h4 class="popular-title">Popular Posts</h4>

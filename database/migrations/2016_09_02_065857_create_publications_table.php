@@ -17,15 +17,16 @@ class CreatePublicationsTable extends Migration
             $table->increments('id');
             $table->boolean('is_active')->default(true);
             $table->char('page_type');
-            $table->integer('number');
             $table->decimal('cost');
+            $table->integer('count'); //на amount поменять
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('last_user_id')->unsigned();
             $table->foreign('last_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('slug')->unique();
             $table->text('title');
-            $table->string('image_url', 1000)->nullable();
+            $table->string('thumbnail_url', 300)->nullable();
+            $table->string('link', 300);
+            $table->string('media_id', 300);
             $table->string('meta_description')->nullable();
             $table->integer('view_count')->unsigned()->default(0)->index();
             $table->timestamps();

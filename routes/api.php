@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth:api'], function () {
         ]
     );
 
+    Route::post('p/add', 'Api\PublicationController@store');
+
 
 
 });

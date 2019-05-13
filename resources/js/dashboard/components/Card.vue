@@ -1,12 +1,10 @@
 <template>
 
-    <div class="single-destination relative">
-        <router-link :to="{name: card.route}">
+    <div class="single-destination relative pb-20">
             <div class="thumb relative">
                 <div class="overlay overlay-bg"></div>
-                <img class="img-fluid" :src="card.thumbnail_url" :alt="card.title">
+                <img class="img-fluid" :src="card.thumbnail_url || thumbnail_url" :alt="card.title">
             </div>
-        </router-link>
         <div class="priceFixed" v-if="card.cost > 0">
             <a :href="card.link">
                 <button class="btn btn-sm btn-warning" >+{{ card.cost }}</button>
@@ -36,6 +34,11 @@
         name: 'Card',
         props: {
             card: Object
+        },
+        data() {
+            return {
+                thumbnail_url: "http://www.kbae.com.au/images/no_user_image.png",
+            }
         }
     }
 </script>
@@ -64,7 +67,7 @@
 
     .single-destination .thumb img {
         width: 100%;
-        height:291px;
+        height:271px;
     }
 
     .single-destination .desc{

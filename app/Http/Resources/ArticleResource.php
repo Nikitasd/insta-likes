@@ -22,6 +22,7 @@ class ArticleResource extends JsonResource
                 'title' => $this->title,
                 'view_count'=> $this->view_count,
                 'content'=> $this->content,
+                'page_image' => $this->page_image
             ],
 
            'relationships' => new ArticleRelationshipResource($this),

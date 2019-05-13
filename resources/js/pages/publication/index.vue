@@ -1,7 +1,14 @@
 <template>
     <div>
-        <section class="top-category-widget-area pt-90 pb-90 ">
+        <section class="top-category-widget-area pt-80 pb-40 ">
         <div class="container">
+
+            <div class="row justify-content-end pb-30">
+                <div class="col-lg-2">
+                    <router-link :to="{name: 'publication.add'}" class="genric-btn info circle">Добавить</router-link>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-lg-4" v-for="category in categories">
                     <div class="single-cat-widget">
@@ -21,22 +28,24 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row d-flex justify-content-center pt-50 ">
+                <div class="menu-content  col-lg-8">
+                    <div class="title text-center">
+                        <h2>Накрутка лайков</h2>
+                    </div>
+                </div>
+            </div>
         </div>
         </section>
 
-        <section class="popular-destination-area">
+        <section class="popular-destination-area pb-40">
             <div class="container">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-lg-1"></div>
-                    <div class="menu-content pb-70 col-lg-8">
-                        <div class="title text-center">
-                            <h1 class="mb-10">Выполняется</h1>
-                            <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, day.</p>
-
+                    <div class="menu-content pb-30 col-lg-8">
+                        <div class="title">
+                            <h2>Популярные</h2>
                         </div>
-                    </div>
-                    <div class="menu-content col-lg-2 text-right">
-                        <h4><a href="#">Весь список</a></h4>
                     </div>
                 </div>
                 <div class="row">
@@ -47,30 +56,21 @@
             </div>
         </section>
 
-        <section class="other-issue-area section-gap">
+        <section class="popular-destination-area pb-80">
             <div class="container">
                 <div class="row d-flex justify-content-center">
-                    <div class="menu-content pb-70 col-lg-9">
-                        <div class="title text-center">
-                            <h1 class="mb-10">Последние публикации</h1>
-                            <p>We all live in an age that belongs to the young at heart. Life that is.</p>
-
+                    <div class="menu-content pb-50 col-lg-8">
+                        <div class="title">
+                            <h3 class="mb-10">Менее популярные</h3>
                         </div>
+                    </div>
+                    <div class="menu-content col-lg-2 text-right">
+                        <h4><a href="#">Весь список</a></h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-6" v-for="n in 4">
-                        <div class="single-other-issue">
-                            <div class="thumb">
-                                <img class="img-fluid" src="/img/o1.jpg" alt="">
-                            </div>
-                            <router-link :to="{name: 'publication.edit'}">
-                                <h4>Rent a Car</h4>
-                            </router-link>
-                            <p>
-                                The preservation of human life is the ultimate value, a pillar of ethics and the foundation.
-                            </p>
-                        </div>
+                    <div class="col-md-4" v-for="(card, index) in cards" :key="index">
+                        <card :card="card"></card>
                     </div>
                 </div>
             </div>
@@ -122,6 +122,30 @@
                     route: "#",
                     thumbnail_url: 'https://instagram.fods1-1.fna.fbcdn.net/vp/9638015ab9adc5b8838f1072dd8f6d87/5D718122/t51.2885-15/sh0.08/e35/s640x640/49663039_1174014882765919_6624389624474183525_n.jpg?_nc_ht=instagram.fods1-1.fna.fbcdn.net',
                     views: 23
+                },
+                {   title: 'Charles Wilson',
+                    cost: null,
+                    route: "#",
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 312
+                },
+                {   title: 'Charles Wilson',
+                    cost: 32,
+                    route: "#",
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 312
+                },
+                {   title: 'Charles Wilson',
+                    cost: null,
+                    route: "#",
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 312
+                },
+                {   title: 'Charles Wilson',
+                    cost: 32,
+                    route: "#",
+                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
+                    views: 312
                 },
             ]
         }),
