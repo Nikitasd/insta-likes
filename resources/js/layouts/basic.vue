@@ -2,13 +2,13 @@
   <div class="main-layout">
     <navbar/>
 
-      <section class="relative blog-home-banner"> <!--Не забудь о консоли. Там ошибка из-за этого--->
+      <section class="relative blog-home-banner">
           <div class="overlay overlay-bg"></div>
           <div class="container">
               <div class="row justify-content-center">
                   <div class="col-lg-3">
                       <div class="about-content blog-header-content pt-20">
-                          <img :src="user.avatar" alt="" width="120" height="120">
+                          <img :src="user.avatar" alt width="120" height="120">
                           <h4>{{ user.username }}</h4>
                           <p class="text-white">
                               {{ user.instagram_link }}
@@ -28,7 +28,7 @@
           </div>
       </section>
 
-     <child/>
+      <router-view></router-view>
   </div>
 </template>
 

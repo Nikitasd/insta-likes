@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,9 +15,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('logout', 'Auth\LoginController@logout');
 
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+
     Route::resource('articles', "Api\ArticleController");
     Route::get(
         'articles/{article}/comments',
@@ -29,17 +25,15 @@ Route::group(['middleware' => 'auth:api'], function () {
         ]
     );
 
-    Route::get(
-        'users/{user}',
-        [
-            'uses' => "Api\UserController@show",
-            'as' => 'users.show'
-        ]
-    );
 
-    Route::post('p/add', 'Api\PublicationController@store');
+    Route::get('/user', "Api\UserController@index");
 
+    Route::get('users/{user}', "Api\UserController@show");
 
+    Route::get("publications", "Api\PublicationController@index");
+    Route::get('publications/{id}', "Api\PublicationController@show");
+
+    Route::post('publications/add', 'Api\PublicationController@add');
 
 });
 

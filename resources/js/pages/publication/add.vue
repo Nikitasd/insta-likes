@@ -20,7 +20,7 @@
                             <form class="form-wrap">
                                 <input type="text" class="form-control" v-model="form.link" placeholder="Ссылка на запись" >
                                 <input type="number" class="form-control" v-model="form.cost" placeholder="Стоимость" >
-                                <input type="number" class="form-control" v-model="form.count" placeholder="Кол-во" >
+                                <input type="number" class="form-control" v-model="form.amount" placeholder="Кол-во" >
 
                                 <button class="genric-btn primary small" @click.prevent="like">Предпросмотр</button>
                             </form>
@@ -37,7 +37,7 @@
                                     <input type="text" class="form-control" v-model="form.link"
                                            placeholder="Ссылка на запись автора">
                                     <input type="number" class="form-control" v-model="form.cost" placeholder="Стоимость" >
-                                    <input type="number" class="form-control" v-model="form.count" placeholder="Кол-во" >
+                                    <input type="number" class="form-control" v-model="form.amount" placeholder="Кол-во" >
                                     <button class="genric-btn primary small" @click.prevent="subscribe">Предпросмотр</button>
                                 </form>
                             </div>
@@ -116,7 +116,7 @@
                 form: new Form({
                     link: '',
                     cost: '',
-                    count: '',
+                    amount: '',
                 }),
                 checkbox: {
                     displayNickname: true,
@@ -127,10 +127,11 @@
                     title: "instagram",
                     link: "",
                     cost: 15,
-                    count: "0/200",
+                    amount: "0/200",
                     thumbnail_url: "",
                     media_id: "",
-                    page_type: ""
+                    page_type: "",
+                    gain: 0,
                 },
                 imageData: [],
             };
@@ -160,6 +161,8 @@
                 vm.card.thumbnail_url = vm.photoData.thumbnail_url;
                 vm.card.media_id = vm.photoData.media_id;
 
+                vm.card.gain = 0;
+
                 vm.card.page_type = "likes";
 
             },
@@ -175,17 +178,17 @@
                 vm.card.link = vm.photoData.author_url;
 
                 vm.card.cost = vm.form.cost;
-                vm.card.count = vm.form.count;
+                vm.card.amount = vm.form.amount;
                 vm.card.title = vm.photoData.author_name;
                 vm.card.thumbnail_url = '';
                 vm.card.media_id = vm.photoData.media_id;
 
-                vm.card.page_type = "subscribers";
+                vm.card.type = "subscribers";
 
             },
             async addPublication() {
 
-                await axios.post('/api/p/add', this.card);
+                await axios.post('/api/publications/add', this.card);
                 // this.$store.dispatch('publication/addPublication', data)
 
                 this.$router.push({ name: 'home' })

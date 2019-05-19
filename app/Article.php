@@ -52,11 +52,11 @@ class Article extends Model
 
     protected function validateAdvancedFilter(array $request)
     {
-        $request['limit'] = $request['limit'] ?? 15;
+        $request['limit'] = $request['limit'] ?? 12;
 
         $validator = validator()->make($request, [
-            'limit' => 'sometimes|required|integer|min:1',
-          //  'page' => 'sometimes|required|integer|min:1',
+            'limit' => 'sometimes|required|integer|min:1|max:12',
+            'page' => 'sometimes|required|integer|min:1',
         ]);
 
 

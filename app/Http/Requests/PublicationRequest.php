@@ -26,7 +26,7 @@ class PublicationRequest extends FormRequest
         return [
             'link'         => 'required|min:10',
             'cost'       => 'required',
-            'count'   => 'required',
+            'amount'   => 'required',
             'page_type'  => 'required',
         ];
     }

@@ -30,9 +30,14 @@
                                 :article="article.attributes"
                                 :contentTruncate="255"
                         ></article-content>
+
+                        <a @click="nextPage" class="primary-btn" v-if="nextEnable">View More</a>
+
                     </template>
 
-                    <a @click="nextPage" class="primary-btn" v-if="nextEnable">View More</a>
+                    <div v-else>
+                        <h3 class="text-center pt-100">На данный момент нет статей</h3>
+                    </div>
 
                 </div>
 
@@ -62,13 +67,10 @@
 
 <script>
 
-    import ArticleContent from './Content'
     import {mapGetters} from 'vuex';
 
     export default {
         layout: 'basic',
-
-        components: { ArticleContent },
 
         data: function() {
             return {

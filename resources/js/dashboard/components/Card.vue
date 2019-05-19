@@ -3,7 +3,7 @@
     <div class="single-destination relative pb-20">
             <div class="thumb relative">
                 <div class="overlay overlay-bg"></div>
-                <img class="img-fluid" :src="card.thumbnail_url || thumbnail_url" :alt="card.title">
+                <img class="img-fluid"  :src="card.thumbnail_url || thumbnail_url" :alt="card.title">
             </div>
         <div class="priceFixed" v-if="card.cost > 0">
             <a :href="card.link">
@@ -11,15 +11,14 @@
             </a>
         </div>
 
-        <div class="countFixed" v-if="card.count">
-            <button class="btn btn-sm btn-success" >{{ card.count }}</button>
+        <div class="countFixed" v-if="card.amount">
+            <button class="btn btn-sm btn-success" >{{ card.gain +"/"+ card.amount }}</button>
         </div>
 
         <div class="desc" v-if="card.title">
             <h4>{{ card.title }}</h4>
 
-            <p v-if="card.views">{{ card.views }} views</p>
-            <p v-else>0 views</p>
+            <p>{{ card.view_count }} views</p>
 
         </div>
 

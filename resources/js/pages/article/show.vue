@@ -85,7 +85,6 @@
     </section>
 </template>
 <script>
-    import ArticleContent from './Content'
     import ArticleComment from './Comment'
 
     import {mapGetters} from 'vuex';
@@ -96,7 +95,7 @@
 
         layout: 'basic',
 
-        components: { ArticleContent, ArticleComment },
+        components: { ArticleComment },
 
         data: function() {
             return {

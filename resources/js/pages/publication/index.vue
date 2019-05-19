@@ -39,18 +39,21 @@
         </div>
         </section>
 
-        <section class="popular-destination-area pb-40">
+        <section class="popular-destination-area pb-80">
             <div class="container">
                 <div class="row d-flex justify-content-center">
-                    <div class="menu-content pb-30 col-lg-8">
+                    <div class="menu-content pb-50 col-lg-8">
                         <div class="title">
-                            <h2>Популярные</h2>
+                            <h3 class="mb-10">Популярные</h3>
                         </div>
                     </div>
+                    <div class="menu-content col-lg-2 text-right">
+                        <h4><a href="#">Весь список</a></h4>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4" v-for="(card, index) in cards" :key="index">
-                        <card :card="card"></card>
+                <div class="row" v-if="cards">
+                    <div class="col-md-4" v-for="card in cards.data" :key="card.id">
+                        <card :card="card.attributes"></card>
                     </div>
                 </div>
             </div>
@@ -58,31 +61,27 @@
 
         <section class="popular-destination-area pb-80">
             <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="menu-content pb-50 col-lg-8">
+                <div class="row" v-if="cards">
+                    <div class="menu-content pb-50 col-lg-12">
                         <div class="title">
-                            <h3 class="mb-10">Менее популярные</h3>
+                            <h3 class="mb-10">Все</h3>
                         </div>
                     </div>
-                    <div class="menu-content col-lg-2 text-right">
-                        <h4><a href="#">Весь список</a></h4>
+                    <template v-for="n in 4">
+                    <div class="col-md-3" v-for="card in cards.data" :key="card.id">
+                        <card :card="card.attributes"></card>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4" v-for="(card, index) in cards" :key="index">
-                        <card :card="card"></card>
-                    </div>
+                    </template>
                 </div>
             </div>
         </section>
-
     </div>
 </template>
 
 <script>
+    import {mapGetters} from 'vuex';
 
     export default {
-        scrollToTop: false,
         layout: 'basic',
 
         data: () => ({
@@ -103,51 +102,20 @@
                 },
 
               ],
-            cards: [
-                {   title: 'Charles Wilson',
-                    cost: null,
-                    route: "#",
-                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
-                    views: 312
-                },
-                {   title: 'Charles Wilson',
-                    cost: 32,
-                    route: "#",
-                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
-                    views: 312
-                },
-                {
-                    title: 'Tony Domo',
-                    cost: null,
-                    route: "#",
-                    thumbnail_url: 'https://instagram.fods1-1.fna.fbcdn.net/vp/9638015ab9adc5b8838f1072dd8f6d87/5D718122/t51.2885-15/sh0.08/e35/s640x640/49663039_1174014882765919_6624389624474183525_n.jpg?_nc_ht=instagram.fods1-1.fna.fbcdn.net',
-                    views: 23
-                },
-                {   title: 'Charles Wilson',
-                    cost: null,
-                    route: "#",
-                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
-                    views: 312
-                },
-                {   title: 'Charles Wilson',
-                    cost: 32,
-                    route: "#",
-                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
-                    views: 312
-                },
-                {   title: 'Charles Wilson',
-                    cost: null,
-                    route: "#",
-                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
-                    views: 312
-                },
-                {   title: 'Charles Wilson',
-                    cost: 32,
-                    route: "#",
-                    thumbnail_url: 'https://justifiedgrid.com/wp-content/gallery/life/biking/137646854.jpg',
-                    views: 312
-                },
-            ]
         }),
+        methods: {
+            async fetchPublications() {
+                // Fetch the article.
+                await this.$store.dispatch('publication/getPublications', 10)
+            },
+        },
+        computed: mapGetters({
+            cards: 'publication/publication'
+        }),
+
+
+        created() {
+            this.fetchPublications();
+        }
     }
 </script>

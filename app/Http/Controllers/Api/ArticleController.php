@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Article;
 use App\Http\Resources\ArticleResource;
-use App\Http\Resources\ArticlesResource;
 use Illuminate\Http\Response;
 
 

@@ -13,7 +13,7 @@
           </div>
       </section>
 
-    <child/>
+      <router-view></router-view>
   </div>
 </template>
 

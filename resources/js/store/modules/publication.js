@@ -3,30 +3,32 @@ import * as types from '../mutation-types'
 
 // state
 export const state = {
-    publications: []
+    publication: null
 }
 
 // getters
 export const getters = {
-    publications: state => {
-        return state.publications
-    }
+    publication: state => state.publication,
 }
 
 // mutations
 export const mutations = {
 
-    [types.ADD_PUBLICATION] (state, publication) {
-        state.publications = publication
+
+    [types.GET_PUBLICATIONS_SUCCESS] (state, { publication }) {
+        state.publication = publication
     },
 }
 
 // actions
 export const actions = {
 
-    addPublication({commit}, form) {
-        commit('ADD_PUBLICATION', res.data)
-        console.log(res.data);
-    }
+    async getPublications ({ commit }, limit = 12) {
+
+        //try, catch
+        const { data } = await axios.get(`/api/publications?limit=${limit}`)
+
+       commit(types.GET_PUBLICATIONS_SUCCESS, { publication: data })
+    },
 
 }

@@ -16,6 +16,7 @@
       <p class="excert">
         {{ article.content | truncate(contentTruncate) }}
       </p>
+
     </div>
   </div>
 
@@ -26,9 +27,8 @@ export default {
   name: 'ArticleContent',
 
   props: {
-      article: {
-          type: Object,
-      },
+      article: Object,
+
      contentTruncate: {
          type: Number,
          required: false
