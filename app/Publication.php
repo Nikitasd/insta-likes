@@ -28,6 +28,11 @@ class Publication extends Model
         'media_id'
     ];
 
+    protected $orderable = [
+        'amount', 'cost', 'updated_at'
+    ];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -35,34 +40,37 @@ class Publication extends Model
 
     public function scopeAdvancedFilter($query)
     {
-        $data = $this->validateAdvancedFilter(request()->all());
-
-            return $query
-                ->where('is_active', true)
-              //  ->latest('amount')
-                ->paginate($data['limit']);
+        return $this->validateAdvancedFilter($query, request()->all())
+            ->where('is_active', request('is_active', 1))
+            ->orderBy(
+                request('order_column', 'created_at'),
+                request('order_direction', 'desc')
+            )
+            ->paginate(request('limit', 12));
     }
 
-    protected function validateAdvancedFilter(array $request)
+    private function validateAdvancedFilter($query, $data)
     {
-        $request['limit'] = $request['limit'] ?? 12;
-
-        $validator = validator()->make($request, [
+        $v = validator()->make($data, [
+            'order_column' => 'sometimes|required|in:'.$this->orderableColumns(),
+            'order_direction' => 'sometimes|required|in:asc,desc',
+            'is_active'=>'sometimes|required|boolean',
             'limit' => 'sometimes|required|integer|min:1|max:12',
             'page' => 'sometimes|required|integer|min:1',
         ]);
 
-        return $validator->validate();
+        if($v->fails()) {
+            // debug
+            return dd($v->messages()->all());
+
+            throw new ValidationException;
+        }
+        return $query;
     }
 
-    public function scopePopularPublication($query)
+    protected function orderableColumns()
     {
-        $data = $this->validateAdvancedFilter(request()->all());
-
-        return $query
-            ->where('is_active', true)
-            ->latest('amount')
-            ->paginate($data['limit']);
+        return implode(',', $this->orderable);
     }
 
 }

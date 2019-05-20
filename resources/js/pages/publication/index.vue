@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="top-category-widget-area pt-80 pb-40 ">
+        <section class="top-category-widget-area pt-80 pb-40">
         <div class="container">
 
             <div class="row justify-content-end pb-30">
@@ -9,7 +9,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" v-if="false">
                 <div class="col-lg-4" v-for="category in categories">
                     <div class="single-cat-widget">
                         <div class="content relative">
@@ -19,9 +19,9 @@
                                     <img class="content-image img-fluid d-block mx-auto" src="/img/blog/cat-widget1.jpg" alt="">
                                 </div>
                                 <div class="content-details">
-                                    <h4 class="content-title mx-auto text-uppercase">{{ category.title }}</h4>
+                                    <h4 class="content-title mx-auto text-uppercase">{{ category.text }}</h4>
                                     <span></span>
-                                    <p>{{ category.description }}</p>
+                                    <p>{{ category.value }}</p>
                                 </div>
                             </router-link>
                         </div>
@@ -36,27 +36,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </section>
 
-        <section class="popular-destination-area pb-80">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <div class="menu-content pb-50 col-lg-8">
-                        <div class="title">
-                            <h3 class="mb-10">Популярные</h3>
-                        </div>
-                    </div>
-                    <div class="menu-content col-lg-2 text-right">
-                        <h4><a href="#">Весь список</a></h4>
-                    </div>
+
+            <b-row class="d-flex justify-content-center">
+                <div class="col-md-3 ">
+                    <b-form-input placeholder="Enter your title" class="mb-4" v-model="filter"></b-form-input>
                 </div>
-                <div class="row" v-if="cards">
-                    <div class="col-md-4" v-for="card in cards.data" :key="card.id">
-                        <card :card="card.attributes"></card>
-                    </div>
+                <div class="col-md-3">
+                    <b-form-select v-model="sort" :options="categories" @input="fetchPublications(sort)"></b-form-select>
                 </div>
-            </div>
+
+            </b-row>
+        </div>
         </section>
 
         <section class="popular-destination-area pb-80">
@@ -67,11 +58,16 @@
                             <h3 class="mb-10">Все</h3>
                         </div>
                     </div>
-                    <template v-for="n in 4">
                     <div class="col-md-3" v-for="card in cards.data" :key="card.id">
                         <card :card="card.attributes"></card>
                     </div>
-                    </template>
+                </div>
+
+
+                <div class="row d-flex justify-content-center">
+                    <div class="pb-20 pt-40">
+                        <a href="#" class="primary-btn">View More</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -80,41 +76,55 @@
 
 <script>
     import {mapGetters} from 'vuex';
+    import axios from 'axios'
 
     export default {
         layout: 'basic',
 
         data: () => ({
+            filter: '',
+            sort: null,
+
             categories: [
-                {   title: 'Лайки',
-                   description: 'Где накрутка лайков',
+                {   text: 'Выберите',
+                    value: null,
+                    disabled: true,
                     route: "",
                 },
                 {
-                    title: 'Подписчики',
-                    description: 'Где накрутка подписчиков',
+                    text: 'Новые',
+                    value: 'updated_at',
                     route: "",
                 },
                 {
-                    title: 'Комментарии',
-                    description: 'Где накрутка комментариев',
+                    text: 'По стоимости',
+                    value: 'cost',
+                    route: "",
+                },
+                {
+                    text: 'Популярные',
+                    value: 'amount',
                     route: "",
                 },
 
               ],
+            query: {
+                order_column: 'cost',
+                order_direction: 'desc',
+                limit: 10,
+            },
         }),
         methods: {
-            async fetchPublications() {
+            async fetchPublications(sort) {
                 // Fetch the article.
-                await this.$store.dispatch('publication/getPublications', 10)
+                await this.$store.dispatch('publication/getPublications', sort)
             },
         },
         computed: mapGetters({
             cards: 'publication/publication'
         }),
 
-
-        created() {
+        mounted() {
             this.fetchPublications();
         }
     }
